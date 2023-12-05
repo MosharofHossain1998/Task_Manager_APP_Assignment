@@ -7,6 +7,7 @@ import 'package:module_12/ui/widgets/snackbar_massage.dart';
 
 import '../../data_network_caller/network_response.dart';
 import '../../data_network_caller/utility/url.dart';
+import 'main_buttom_nav_screen.dart';
 
 class AddNewTaskScreen extends StatefulWidget {
   const AddNewTaskScreen({super.key});
@@ -129,6 +130,7 @@ class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
             context,
             'Task Creation Successful',
           );
+          Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const MainButtomNavScreen()), (route) => false);
         }
       } else {
         if (mounted) {

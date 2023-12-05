@@ -24,7 +24,7 @@ class AuthenticationController {
 
   static Future<void> initializeUserCache() async{
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    sharedPreferences.getString('token');
+    token = sharedPreferences.getString('token');
     user = UserModel.fromJson(jsonDecode(sharedPreferences.getString('user') ?? '{}'));
     log(user.toString());
   }

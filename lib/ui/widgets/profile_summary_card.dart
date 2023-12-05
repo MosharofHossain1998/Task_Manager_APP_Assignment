@@ -43,13 +43,14 @@ class _ProfileSummaryCardState extends State<ProfileSummaryCard> {
       leading: CircleAvatar(
         child: AuthenticationController.user?.photo == null
             ? const Icon(Icons.person)
-            : ClipRRect(
-                borderRadius: BorderRadius.circular(30),
-                child: Image.memory(
-                  imageBytes,
-                  fit: BoxFit.cover,
-                ),
+            : ClipOval(
+              child: Image.memory(
+                imageBytes,
+                fit: BoxFit.cover,
+                height: 50,
+                width: 50,
               ),
+            ),
       ),
       title: Text(
         fullName,
@@ -61,7 +62,7 @@ class _ProfileSummaryCardState extends State<ProfileSummaryCard> {
       ),
       trailing: IconButton(
         onPressed: () async {
-          await AuthenticationController.clearAuthenticationData();
+          AuthenticationController.clearAuthenticationData();
           if(mounted) {
             Navigator.pushAndRemoveUntil(context,
                 MaterialPageRoute(builder: (context) => const LoginScreen(),), (
